@@ -30,13 +30,13 @@ def is_valid(array):
 class Matrix():
     def __init__(self, array):
         is_valid(array)
-        self.matrix = []
+        self.array = []
 
         # Matrix filling
         # Case for one column
         if isinstance(array[0], (int, float)):
             for row in array:
-                self.matrix.append([row])
+                self.array.append([row])
             return
 
         # Check if matrice given is valid
@@ -52,12 +52,12 @@ class Matrix():
             row = []
             for j in range(len(array[i])):
                 row.append(array[i][j])
-            self.matrix.append(row)
+            self.array.append(row)
 
 
     # Print values of Matrix object
     def print(self, new_line=True):
-        for row in self.matrix:
+        for row in self.array:
             print(row)
         if new_line:
             print()
@@ -65,23 +65,24 @@ class Matrix():
 
     # Returns an array with shape [rows, columns]
     def shape(self):
-        return [len(self.matrix), len(self.matrix[0])]
+        return [len(self.array), len(self.array[0])]
 
 
-    # Returns an array version of the Matrix
-    def to_array(self):
-        array = []
-        for col in self.matrix:
+    # Returns a same sized array filled with 0
+    def zeros(self):
+        shape = self.shape()
+        zeros = []
+        for i in range(shape[0]):
             row = []
-            for val in col:
-                row.append(val)
-            array.append(row)
-        return array
+            for j in range(shape[1]):
+                row.append(0)
+            zeros.append(row)
+        return zeros
 
 
     # Returns a boolean if the Matrix is a square
     def is_square(self):
-        if len(self.matrix[0]) == len(self.matrix):
+        if len(self.array[0]) == len(self.array):
             return True
         return False
 
@@ -90,10 +91,10 @@ class Matrix():
     def add(self, matrix):
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
-                len_row_source = len(self.matrix[i])
+                len_row_source = len(self.array[i])
                 len_row_target = len(matrix[i])
                 if len_row_source == len_row_target:
-                    self.matrix[i][j] += matrix[i][j]
+                    self.array[i][j] += matrix[i][j]
                 else:
                     print(
                         '\033[31mAdd error : Invalid size between two matrices\033[0m')
@@ -104,8 +105,8 @@ class Matrix():
     def sub(self, matrix):
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
-                if len(self.matrix[i]) == len(matrix[i]):
-                    self.matrix[i][j] -= matrix[i][j]
+                if len(self.array[i]) == len(matrix[i]):
+                    self.array[i][j] -= matrix[i][j]
                 else:
                     print(
                         '\033[31mAdd error : Invalid size between two matrices\033[0m')
@@ -114,6 +115,8 @@ class Matrix():
 
     # Multiply a matrix with a scalar
     def scl(self, scalar):
-        for i in range(len(self.matrix)):
-            for j in range(len(self.matrix[i])):
-                self.matrix[i][j] *= scalar
+        for i in range(len(self.array)):
+            for j in range(len(self.array[i])):
+                self.array[i][j] *= scalar
+
+    
