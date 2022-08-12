@@ -59,6 +59,8 @@ class Matrix():
 	# Print values of Matrix object
 	def print(self, new_line=True):
 		for row in self.array:
+			for i in range(len(row)):
+				row[i] = round(row[i], 4)
 			print(row)
 		if new_line:
 			print()
@@ -171,3 +173,52 @@ class Matrix():
 				tmp.append(self.array[j][i])
 			result.append(tmp)
 		return result
+
+	# Row Echelon - Switch Lines
+	def __switch_lines(self, i: int, j: int):
+		# Li <-> Lj to A
+		self.array[i], self.array[j] = self.array[j], self.array[i]
+
+	# Row Echelon - Transvection
+	def __transvection(self, i: int, j: int, mult: float):
+		# Li <- Li + mult * Lj to A
+		for k in range(self.shape()[1]): # Columns
+			self.array[i][k] = self.array[i][k] + mult * self.array[j][k]
+
+	# Row Echelon - Pivot
+	def __get_pivot(self, line: int, col: int):
+		pivot = self.array[line][col]
+		if pivot == 0:
+			for following_line in range(line, self.shape()[0]):
+				if self.array[following_line][col] != 0:
+					self.__switch_lines(following_line, line)
+					return self.array[line][col], col
+			if (line + 1 < self.shape()[1]):
+				return self.__get_pivot(line, line + 1)
+			return 42, 0
+		else:
+			return pivot, col
+	
+	# Row Echelon - Result
+	def row_echelon(self):	
+		nb_lines = self.shape()[0]
+		nb_cols = self.shape()[1]
+		for line in range(nb_lines):
+			if line >= nb_cols:
+				self.print()
+				return self.array
+			pivot, col = self.__get_pivot(line, line)
+			for c in range(nb_cols):
+				self.array[line][c] /= pivot
+			if (line != 0):
+				# Go back to reduce above lines
+				for previous_line in range(line):
+					self.__transvection(previous_line, line, -self.array[previous_line][col])
+			for following_line in range(line + 1, nb_lines):
+				self.__transvection(following_line, line, -self.array[following_line][col])
+		# Go back to reduce above lines from the last one
+		for previous_line in range(line):
+			self.__transvection(previous_line, line, -self.array[previous_line][col])
+		self.print()
+		return self.array
+
