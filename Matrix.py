@@ -222,3 +222,47 @@ class Matrix():
 		self.print()
 		return self.array
 
+	# Determinant of square matrix
+	def determinant(self):
+		if self.is_square() == False:
+			print('Not a square Matrix, we cannot find its determinant')
+		size = self.shape()[0]
+		if (size == 1):
+			return self.array[0][0]
+		elif (size == 2):
+			return self.array[0][0] * self.array[1][1] - self.array[0][1] * self.array[1][0]
+		elif size == 3:
+			a = self.array[0][0]
+			b = self.array[0][1]
+			c = self.array[0][2]
+			d = self.array[1][0]
+			e = self.array[1][1]
+			f = self.array[1][2]
+			g = self.array[2][0]
+			h = self.array[2][1]
+			i = self.array[2][2]
+			return a * e * i + d * h * c + g * b * f - c * e * g - f * h * a - i * b * d
+		elif size == 4:
+			a = self.array[0][0]
+			b = self.array[0][1]
+			c = self.array[0][2]
+			d = self.array[0][3]
+			e = self.array[1][0]
+			f = self.array[1][1]
+			g = self.array[1][2]
+			h = self.array[1][3]
+			i = self.array[2][0]
+			j = self.array[2][1]
+			k = self.array[2][2]
+			l = self.array[2][3]
+			m = self.array[3][0]
+			n = self.array[3][1]
+			o = self.array[3][2]
+			p = self.array[3][3]
+			
+			return https://www.toppr.com/guides/maths/determinants/determinant-of-a-matrix/#For_44_Matrices_and_Higher
+		else:
+			print('Oversized !')
+			return
+
+
