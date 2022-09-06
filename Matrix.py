@@ -191,16 +191,17 @@ class Matrix():
 	# Row Echelon - Pivot
 	def __get_pivot(self, line: int, col: int, identity = []):
 		pivot = self.array[line][col]
+		# Will be used in case there is only 0 in the current column
 		if pivot == 0:
 			for following_line in range(line, self.shape()[0]):
 				if self.array[following_line][col] != 0:
 					self.__switch_lines(following_line, line)
 					# Use the same action on the original identity Matrix to find inverse
-					if len(identity.array) > 0:
+					if isinstance(identity, Matrix) and len(identity.array) > 0:
 						identity.array[line], identity.array[following_line] = identity.array[following_line], identity.array[line]
 					return self.array[line][col], col
-			if (line + 1 < self.shape()[1]):
-				return self.__get_pivot(line, line + 1)
+			if (col + 1 < self.shape()[1]):
+				return self.__get_pivot(line, col + 1, identity)
 			return 42, 0
 		else:
 			return pivot, col
@@ -326,3 +327,20 @@ class Matrix():
 								self.array[previous_line][col])
 		identity.print()
 		return identity.array
+
+	def rank(self):
+		rank = 0
+
+		# Make a deep copy
+		matrix = Matrix(self.array)
+
+		matrix.row_echelon()
+		nb_cols = matrix.shape()[1]
+		for row in matrix.array:
+			nb_zeros = 0
+			for value in row: 
+				if value == 0:
+					nb_zeros += 1
+			if nb_zeros != nb_cols:
+				rank += 1
+		return rank
