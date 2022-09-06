@@ -296,12 +296,8 @@ class Matrix():
 
 	# Elementary row operation for inverse Matrix
 	def __row_echelon(self, identity):
-		nb_lines = self.shape()[0]
-		nb_cols = self.shape()[1]
+		nb_lines, nb_cols = self.shape()
 		for line in range(nb_lines):
-			print('Stage', line)
-			identity.print()
-			self.print()
 			if line >= nb_cols:
 				self.print()
 				return self.array
@@ -311,15 +307,16 @@ class Matrix():
 				self.array[line][c] /= pivot
 			if (line != 0):
 				# Go back to reduce above lines
+				# It is important to process 'identity' before 'self' to use original values
 				for previous_line in range(line):
-					self.__transvection(
-						previous_line, line, -self.array[previous_line][col])
 					identity.__transvection(
 						previous_line, line, -self.array[previous_line][col])
+					self.__transvection(
+						previous_line, line, -self.array[previous_line][col])
 			for following_line in range(line + 1, nb_lines):
-				self.__transvection(following_line, line, -
-									self.array[following_line][col])
 				identity.__transvection(following_line, line, -
+									self.array[following_line][col])
+				self.__transvection(following_line, line, -
 									self.array[following_line][col])
 		# Go back to reduce above lines from the last one
 		for previous_line in range(line):
