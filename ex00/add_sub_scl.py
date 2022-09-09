@@ -113,4 +113,4 @@ if __name__ == '__main__':
 	print('\033[36mSub...\033[0m\n')
 	testSubMatrix(Matrix([[complex(1, 1), complex(2, 2)], [complex(3, 3), complex(4, 4)]]), Matrix([[complex(3, 3), complex(4, 4)], [5, 6]]))
 	print('\033[36mScale...\033[0m\n')
-	testSclMatrix(Matrix([[complex(1, 1), complex(2, 2)], [complex(3, 3), complex(4, 4)]]), 3)
+	testSclMatrix(Matrix([[complex(1, 1), complex(2, 2)], [complex(3, 3), complex(4, 4)]]), complex(3, 2))

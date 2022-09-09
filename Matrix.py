@@ -12,7 +12,7 @@ def is_valid(array):
 	# Case for one single row
 	if isinstance(array[0], (int, float, complex)):
 		for val in array:
-			if not isinstance(val, (int, float)):
+			if not isinstance(val, (int, float, complex)):
 				print('\033[31mIncorrect value given (' +
 					  str(val) + ').\033[0m')
 				sys.exit(1)
@@ -37,7 +37,7 @@ class Matrix():
 
 		# Matrix filling
 		# Case for one column
-		if isinstance(array[0], (int, float)):
+		if isinstance(array[0], (int, float, complex)):
 			for row in array:
 				self.array.append([row])
 			return

@@ -36,3 +36,11 @@ if __name__ == '__main__':
 	linear_combinaison([Matrix([[1, 2], [1, 2]]), Matrix([[5, 10], [15, 20]]), Matrix([[10, 10], [1, 1]])], [1, 2, -1])
 	linear_combinaison([Matrix([[1, 2, 3], [1, 4, 3], [1, 2, 6]]), Matrix([[1, -1, 3], [0, 2, 0], [10, 2, 3]]), Matrix([[1, 2, 13], [1, 2, 3], [13, 2, 3]])], [1, 0, 3])
 
+
+	print('\033[7;49;32mComplex\033[0m\n')
+	print('\033[32mVector\033[0m\n')
+	linear_combinaison([Vector([complex(1, 1), complex(2, 2)]), Vector([complex(5, 2), 10]), Vector([10, 10])], [1, 2, -1])
+
+	print('\033[32mMatrix\033[0m\n')
+	linear_combinaison([Matrix([[complex(1, 1), complex(2, 2)], [complex(1, 1), complex(2, 3)]]), Matrix([[complex(5, 2), 11], [complex(5, 2), 10]]), Matrix([[10, 0], [5, 10]])], [1, 2, -1])
+

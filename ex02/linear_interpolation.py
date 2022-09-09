@@ -6,12 +6,12 @@ from Vector import Vector
 
 
 def linear_interpolation(o1, o2, coef):
-	if not isinstance(coef, (int, float)):
+	if not isinstance(coef, (int, float, complex)):
 		print(
 			'\033[31mInput error : The coefficient must be a number\033[0m')
 		return
 
-	if isinstance(o1, (int, float)) and isinstance(o2, (int, float)):
+	if isinstance(o1, (int, float, complex)) and isinstance(o2, (int, float, complex)):
 		print(o1, ' [ ', coef, ' ] ', o2)
 		print('Result: ', o1 + (o2 - o1) * coef, end='\n\n')
 	elif isinstance(o1, (Vector, Matrix)) and isinstance(o2, (Vector, Matrix)):

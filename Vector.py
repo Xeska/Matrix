@@ -21,7 +21,7 @@ class Vector:
 
 	# Returns an array with shape
 	def shape(self):
-		if isinstance(self.array[0], (float, int)):
+		if isinstance(self.array[0], (float, int, complex)):
 			return [len(self.array), 1]
 
 
