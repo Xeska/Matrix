@@ -27,6 +27,7 @@ if __name__ == '__main__':
 	v2 = Vector([0, 0, 0])
 	v3 = Vector([-1, -2, -3])
 	v4 = Vector([10, 0, 5])
+	v5 = Vector([complex(1, 2), complex(2, 3), complex(4, 1)])
 
 	print('Vector 1: ')
 	v1.print()
@@ -51,6 +52,13 @@ if __name__ == '__main__':
 	print('Vector 2: ')
 	v4.print()
 	print('\033[32mProduct: ', v4.dot(v1), '\033[0m\n')
+
+	print('Complex')
+	print('Vector 1: ')
+	v1.print()
+	print('Vector 2: ')
+	v5.print()
+	print('\033[32mProduct: ', v5.dot(v1), '\033[0m\n')
 
 	# dot_product(Vector([1, 2, 3]), Vector([1, 2, 3]))
 	# dot_product(Vector([0, 0, 0]), Vector([1, 2, 3]))
