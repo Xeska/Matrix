@@ -353,8 +353,8 @@ class Matrix():
 		proj = Matrix([[0] * 4] * 4)
 
 		f = 1 / math.tan(fov / 2)
-		proj.array[0][0] = f / ratio
-		proj.array[1][1] = f
+		proj.array[0][0] = near / ratio
+		proj.array[1][1] = near * near / f
 		proj.array[2][2] = -(near + far) / (far - near)
 		proj.array[2][3] = -2 * near * far / (far - near)
 		proj.array[3][2] = -1
