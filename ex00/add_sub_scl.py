@@ -81,6 +81,14 @@ if __name__ == '__main__':
 	testSclVector(Vector([1, 2, 3]), 10)
 	testSclVector(Vector([1, 2, 3]), 1.5)
 
+	print('\033[7;49;32mComplex\033[0m\n')
+	print('\033[32mAdd...\033[0m\n')
+	testAddVector(Vector([complex(1, 2), complex(3, 4)]), Vector([complex(1, 2), complex(-3, 4)]))
+	print('\033[32mSub...\033[0m\n')
+	testSubVector(Vector([complex(1, 2), complex(3, 4)]), Vector([complex(1, 2), complex(-3, 4)]))
+	print('\033[32mScale...\033[0m\n')
+	testSclVector(Vector([complex(1, 2), complex(3, 4)]), 3)
+
 	print('\033[7;49;36mMatrix\033[0m\n')
 
 	print('\033[36mAdd...\033[0m\n')
@@ -98,3 +106,11 @@ if __name__ == '__main__':
 	testSclMatrix(Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), 0)
 	testSclMatrix(Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), 10)
 	testSclMatrix(Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), 1.5)
+
+	print('\033[7;49;36mComplex\033[0m\n')
+	print('\033[36mAdd...\033[0m\n')
+	testAddMatrix(Matrix([[complex(1, 1), complex(2, 2)], [complex(3, 3), complex(4, 4)]]), Matrix([[complex(3, 3), complex(4, 4)], [5, 6]]))
+	print('\033[36mSub...\033[0m\n')
+	testSubMatrix(Matrix([[complex(1, 1), complex(2, 2)], [complex(3, 3), complex(4, 4)]]), Matrix([[complex(3, 3), complex(4, 4)], [5, 6]]))
+	print('\033[36mScale...\033[0m\n')
+	testSclMatrix(Matrix([[complex(1, 1), complex(2, 2)], [complex(3, 3), complex(4, 4)]]), 3)

@@ -10,7 +10,7 @@ def is_valid(array):
 		print('\033[31mEmpty array.\033[0m')
 		sys.exit(1)
 	# Case for one single row
-	if isinstance(array[0], (int, float)):
+	if isinstance(array[0], (int, float, complex)):
 		for val in array:
 			if not isinstance(val, (int, float)):
 				print('\033[31mIncorrect value given (' +
@@ -24,7 +24,7 @@ def is_valid(array):
 	# Case for multiple rows
 	for row in array:
 		for val in row:
-			if not isinstance(val, (int, float)):
+			if not isinstance(val, (int, float, complex)):
 				print('\033[31mIncorrect value given (' +
 					  str(row) + ').\033[0m')
 				sys.exit(1)
@@ -62,7 +62,8 @@ class Matrix():
 	def print(self, new_line=True):
 		for row in self.array:
 			for i in range(len(row)):
-				row[i] = round(row[i], 4)
+				if isinstance(row[i], (int, float)):
+					row[i] = round(row[i], 4)
 			print(row)
 		if new_line:
 			print()
