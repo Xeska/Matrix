@@ -1,4 +1,6 @@
+import math
 import sys
+from unittest import result
 from Vector import Vector
 
 
@@ -328,6 +330,7 @@ class Matrix():
 		identity.print()
 		return identity.array
 
+	# Rank
 	def rank(self):
 		rank = 0
 
@@ -344,3 +347,30 @@ class Matrix():
 			if nb_zeros != nb_cols:
 				rank += 1
 		return rank
+
+	# Projection matrix for OpenGL
+	def projection(self, fov, ratio, near, far):
+		proj = Matrix([[0] * 4] * 4)
+
+		f = 1 / math.tan(fov / 2)
+		proj.array[0][0] = f / ratio
+		proj.array[1][1] = f
+		proj.array[2][2] = -(near + far) / (far - near)
+		proj.array[2][3] = -2 * near * far / (far - near)
+		proj.array[3][2] = -1
+
+		result_string = ''
+
+		for line in proj.array:
+			length_line = len(line)
+			for i in range(length_line):
+				result_string += str(line[i])
+				if (i < length_line - 1):
+					result_string += ', '
+				else:
+					result_string += '\n'
+
+		return result_string
+
+	def __tan(self, angle):
+		print('tanned')
