@@ -1,4 +1,5 @@
 import math
+import os
 import sys
 sys.path.append('.')
 
@@ -11,5 +12,5 @@ if __name__ == '__main__':
     # Field of view : PI / 2 <=> 90 deg
     # Ratio 1:1
     # Near : 1, Far : 10
-    print(m0.projection(math.pi / 2, 1, 1, 10), end='')
-
+    m0.projection(math.pi / 2, 1, 1, 10)
+    os.system('./display')

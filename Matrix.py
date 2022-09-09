@@ -349,10 +349,16 @@ class Matrix():
 		return rank
 
 	# Projection matrix for OpenGL
+	# Source: http://songho.ca/opengl/gl_projectionmatrix.html
 	def projection(self, fov, ratio, near, far):
 		proj = Matrix([[0] * 4] * 4)
 
-		f = 1 / math.tan(fov / 2)
+		# We are not allowed to use tan
+		angle = fov / 2
+		tan_fov = math.sin(angle) / math.cos(angle)
+
+		# Fill the projection Matrix
+		f = 1 / tan_fov
 		proj.array[0][0] = near / ratio
 		proj.array[1][1] = near * near / f
 		proj.array[2][2] = -(near + far) / (far - near)
@@ -360,7 +366,6 @@ class Matrix():
 		proj.array[3][2] = -1
 
 		result_string = ''
-
 		for line in proj.array:
 			length_line = len(line)
 			for i in range(length_line):
@@ -370,7 +375,9 @@ class Matrix():
 				else:
 					result_string += '\n'
 
-		return result_string
+		# Create the 'proj' file
+		file = open('proj', 'w')
+		file.write(result_string)
+		file.close()
 
-	def __tan(self, angle):
-		print('tanned')
+		return proj
