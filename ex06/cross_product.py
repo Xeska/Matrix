@@ -27,6 +27,7 @@ if __name__ == '__main__':
 	v3 = Vector([-2, 4, -6])
 	v4 = Vector([0, 1, 0])
 	v5 = Vector([-10, 5, 50])
+	v6 = Vector([complex(1, 2), complex(2, 3), complex(4, 1)])
 
 	print('Vector 1: ')
 	v1.print()
@@ -63,3 +64,10 @@ if __name__ == '__main__':
 	print('Vector 2: ')
 	v5.print()
 	print('\033[32mCross Product: ', cross_product(v1, v5), '\033[0m\n')
+
+	print('Complex')
+	print('Vector 1: ')
+	v1.print()
+	print('Vector 2: ')
+	v6.print()
+	print('\033[32mCross Product: ', cross_product(v1, v6), '\033[0m\n')

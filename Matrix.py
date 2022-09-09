@@ -144,7 +144,7 @@ class Matrix():
 	# Multiply a matrix with a matrix
 	def mul_mat(self, matrix):
 		if isinstance(matrix, Matrix):
-			if self.shape()[1] != matrix.shape()[0]:
+			if self.shape()[1] != matrix.shape()[0] or matrix.shape()[1] != self.shape()[0]:
 				print(
 					'in A x B, the number of colums of A must be equal to the number of line of B')
 				return
