@@ -10,6 +10,7 @@ if __name__ == '__main__':
 	m3 = Matrix([[-1, 1, -1], [2, 5, -0], [0, 1, 3]])
 	m4 = Matrix([[10, 100, 1000], [-1, -2, -3], [1, -2, 5]])
 	m5 = Matrix([[1, 2], [2, 0], [1, 0]])
+	m6 = Matrix([[complex(1, 1), complex(2, 2), complex(5, -2)], [complex(3, 3), complex(4, 4), complex(-2, 1)]])
 
 	print('Matrix: ')
 	m1.print()
@@ -30,3 +31,8 @@ if __name__ == '__main__':
 	print('Matrix: ')
 	m5.print()
 	print('\033[32mTranspose :', m5.transpose(), '\033[0m\n')
+
+	print('Complex')
+	print('Matrix: ')
+	m6.print()
+	print('\033[32mTranspose :', m6.transpose(), '\033[0m\n')

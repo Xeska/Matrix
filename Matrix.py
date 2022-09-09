@@ -64,6 +64,8 @@ class Matrix():
 			for i in range(len(row)):
 				if isinstance(row[i], (int, float)):
 					row[i] = round(row[i], 4)
+				elif isinstance(row[i], complex):
+					row[i] = complex(round(row[i].real, 4), round(row[i].imag, 4))
 			print(row)
 		if new_line:
 			print()
